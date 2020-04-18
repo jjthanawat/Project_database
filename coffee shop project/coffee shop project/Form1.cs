@@ -30,9 +30,9 @@ namespace coffee_shop_project
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide(); //ซ้อนหน้า Form1
             add_proucts addproducts = new add_proucts();
-            addproducts.Show();
+            addproducts.Show(); //เปิดหน้า add_products
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace coffee_shop_project
             string N_product = comboBox1.Text; //เครื่องดื่ม
             string T_product = comboBox2.Text; //ชนิดเครื่องดื่ม
             string O_product = comboBox3.Text; //เพิ่มเติม
-            
+
             //------------------------------------------------------------------------//
 
             string sql = "SELECT Price FROM products WHERE ProductName ='" + N_product + "'";
@@ -62,15 +62,15 @@ namespace coffee_shop_project
             if (reader.Read())
             {
 
-                cal_price = reader.GetInt32("Price");
-                prices = reader.GetInt32("Price");
-                totolprice += totolprice + cal_price;
+                cal_price = reader.GetInt32("Price"); //เก็บราคา
+                prices = reader.GetInt32("Price"); //เก็บราคาเฉพาะชิ้น
+                totolprice += totolprice + cal_price; //เก็บราคารวม โยกการบวกราคาไปเรื่อยๆ
 
             }
             con.Close();
             //cal_price = cal_price + totolprice;
-            string x = totolprice.ToString();
-            textBox1.Text = x;
+            string x = totolprice.ToString(); //แปลงค่าเพื่อแสดงใน textBox1
+            textBox1.Text = x; //แสดงราคารวม
             //-----------------------------------------------------------
             if (N_product == "เลือกเครื่องดื่ม") //เช็คเงื่อนไข เลือกเครื่องดื่มหรือยัง
             {
@@ -83,23 +83,12 @@ namespace coffee_shop_project
                     MessageBox.Show("ชนิดเครื่องดื่มยังไม่ถูกเลือก");
                 }
                 else
-                {   //เช็คเงื่อนไข เพิ่มอะไรลงในเครื่องดื่มหรือไม่
-                    if (O_product == "ไม่เพิ่ม" || O_product == "เพิ่มเติม")   //ไม่เพิ่ม
-                    {
-                        //listBox1.Items.Add("" + N_product + " " + T_product + "");
-                        listBox1.Items.Add(N_product);
-                        listBox2.Items.Add(T_product);
-                        listBox3.Items.Add(O_product);
-                        listBox4.Items.Add(prices);
-                    }
-                    else   //เพิ่ม
-                    {
-
-                        //listBox1.Items.Add("" + N_product + " " + T_product + "");
-                        listBox1.Items.Add(N_product);
-                        listBox2.Items.Add(T_product);
-                        listBox3.Items.Add(O_product); //เพิ่มรายการนี้ลงใน listbox
-                    }
+                {
+                    //listBox1.Items.Add("" + N_product + " " + T_product + "");
+                    listBox1.Items.Add(N_product);
+                    listBox2.Items.Add(T_product);
+                    listBox3.Items.Add(O_product);
+                    listBox4.Items.Add(prices);
                 }
             }
         }
@@ -193,15 +182,15 @@ namespace coffee_shop_project
                     textBox3.Text = totol.ToString();
                     if (int.Parse(textBox3.Text) < 0)
                     {
-                        int c = int.Parse(textBox3.Text)*(-1);
-                        MessageBox.Show("จำนวนเงินไม่พอจ่ายอีก "+c+" บาท");
+                        int c = int.Parse(textBox3.Text) * (-1);
+                        MessageBox.Show("จำนวนเงินไม่พอจ่ายอีก " + c + " บาท");
                     }
                 }
                 else
                 {
                     MessageBox.Show("กรุณาใส่จำนวนเงินที่ได้รับจากลูกค้า");
                 }
-                
+
             }
 
         }
