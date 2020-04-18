@@ -93,19 +93,15 @@ namespace coffee_shop_project
         {
             //string sql = "SELECT Price FROM products WHERE ProductName ='" + N_product + "'";
             //string sql = "DELETE FROM products WHERE products.ProductID = 13";
-            string sql = "DELETE FROM products WHERE ProductName = '" + N_product + "'";
+            string sql = "DELETE FROM products WHERE ProductName = '" + listBox1.Text + "'";
             MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
             MySqlCommand cmd = new MySqlCommand(sql, con);
             con.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-
-                cal_price = reader.GetInt32("Price");
-                totolprice += totolprice + cal_price;
-
-            }
+            //cmd.ExecuteNonQuery();
             con.Close();
+
+            listBox1.Items.Remove(listBox1.Text);
         }
     }
 }
