@@ -58,7 +58,36 @@ namespace coffee_shop_project
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string N_product = comboBox1.Text; //เครื่องดื่ม
+            string T_product = comboBox2.Text; //ชนิดเครื่องดื่ม
+            string O_product = comboBox3.Text; //เพิ่มเติม
+            if (O_product == "ไม่เพิ่ม")
+            {
+                listBox1.Items.Add("" + N_product + " " + T_product + "");
+            }
+            else
+            {
 
+                listBox1.Items.Add("" + N_product + " " + T_product + " " + O_product + "");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            comboBox1.Items.Clear();
+            string sql = "select * from products";
+            MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            con.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string product = reader.GetString("ProductName");
+                comboBox1.Items.Add(product);
+            }
+            //cmd.ExecuteNonQuery();
+            con.Close();
         }
     }
 }

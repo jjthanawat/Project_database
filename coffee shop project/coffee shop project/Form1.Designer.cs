@@ -105,6 +105,7 @@
             this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
+            "ไม่เพิ่ม",
             "เพิ่ม ไข่มุก",
             "เพิ่ม ฟรุตสลัด",
             "ใส่ทั้งสองอย่าง"});
@@ -156,6 +157,7 @@
             this.textBox1.Location = new System.Drawing.Point(172, 511);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(215, 35);
             this.textBox1.TabIndex = 6;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -231,6 +233,7 @@
             this.textBox3.Location = new System.Drawing.Point(172, 596);
             this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(215, 35);
             this.textBox3.TabIndex = 6;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -255,6 +258,7 @@
             this.button4.Size = new System.Drawing.Size(122, 63);
             this.button4.TabIndex = 7;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
