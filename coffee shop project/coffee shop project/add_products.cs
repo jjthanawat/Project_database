@@ -27,17 +27,21 @@ namespace coffee_shop_project
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string output = "";
             Random r = new Random();
             int[] ar_ran = new int[11];
-            for(int i = 0; i <= 11; i++)
+            for(int i = 0; i <= 10; i++)
             {
-                ar_ran[i] = r.Next();
+                ar_ran[i] = r.Next(0,9);
             }
-            foreach(int i in ar_ran)
+            for (int j = 0; j <= 10; j++)
             {
-                listBox1.Show(i);
+                output += ar_ran[j] + "";
             }
-            
+            textBox1.Text = output;
+
+
+
 
 
 

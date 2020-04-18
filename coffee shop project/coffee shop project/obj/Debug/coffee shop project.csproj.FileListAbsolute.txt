@@ -9,3 +9,14 @@ C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop projec
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.exe
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.pdb
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee_shop_project.add_proucts.resources
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\MySql.Data.dll
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\MySql.Web.dll
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\QRCoder.dll
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\System.Drawing.Common.dll
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\Google.Protobuf.dll
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\Renci.SshNet.dll
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\MySql.Data.xml
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\MySql.Web.xml
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.csproj.CopyComplete
