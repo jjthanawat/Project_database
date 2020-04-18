@@ -85,17 +85,17 @@ namespace coffee_shop_project
                 else
                 {
                     //listBox1.Items.Add("" + N_product + " " + T_product + "");
-                    listBox1.Items.Add(N_product);
-                    listBox2.Items.Add(T_product);
-                    listBox3.Items.Add(O_product);
-                    listBox4.Items.Add(prices);
+                    listBox1.Items.Add(N_product); //แสดชื่อ
+                    listBox2.Items.Add(T_product);  //แสดงชนิด
+                    listBox3.Items.Add(O_product);  //เพิ่มเติม
+                    listBox4.Items.Add(prices); //แสดงราคา
                 }
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            comboBox1.Items.Clear();
+            comboBox1.Items.Clear(); //ลบค่าใน comboBox1 ทั้งหมด
             string sql = "select * from products";
             MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
 
@@ -104,8 +104,8 @@ namespace coffee_shop_project
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                string product = reader.GetString("ProductName");
-                comboBox1.Items.Add(product);
+                string product = reader.GetString("ProductName"); 
+                comboBox1.Items.Add(product); //เพิ่มค่าใน comboBox1 ทั้งหมด
             }
             //cmd.ExecuteNonQuery();
             con.Close();
@@ -126,6 +126,7 @@ namespace coffee_shop_project
             listBox1.Items.Clear();
             listBox2.Items.Clear();
             listBox3.Items.Clear();
+            listBox4.Items.Clear();
             totolprice = 0;
             textBox1.Text = totolprice.ToString();
         }
@@ -170,23 +171,23 @@ namespace coffee_shop_project
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" || textBox1.Text == "0")
+            if (textBox1.Text == "" || textBox1.Text == "0") //เช็คเงื่อนไข textBox1 ว่างหรือเท่ากับ 0 หรือไม่
             {
-
+                //ไม่ต้องทำอะไร
             }
             else
             {
-                if (textBox2.Text != "")
+                if (textBox2.Text != "") //เช็คเงื่อนไขถ้า textBox2 ไม่ว่าง
                 {
-                    int totol = int.Parse(textBox2.Text) - totolprice;
-                    textBox3.Text = totol.ToString();
-                    if (int.Parse(textBox3.Text) < 0)
+                    int totol = int.Parse(textBox2.Text) - totolprice; //ลบจำนวนเงินที่ได้จากลูกค้า กับ ราคาทั้งหมด
+                    textBox3.Text = totol.ToString(); //แปลงค่าเป็นข้อความ
+                    if (int.Parse(textBox3.Text) < 0)   //เช็นเงื่อนไข ถ้าเงินทอนติดลบ
                     {
-                        int c = int.Parse(textBox3.Text) * (-1);
-                        MessageBox.Show("จำนวนเงินไม่พอจ่ายอีก " + c + " บาท");
+                        int c = int.Parse(textBox3.Text) * (-1); //คูณจำนวนที่ติดลบเข้ากับ -1
+                        MessageBox.Show("จำนวนเงินไม่พอจ่ายอีก " + c + " บาท"); //แสดงเงินที่ต้องจ่ายเพิ่ม
                     }
                 }
-                else
+                else //ถ้าช่องรับเงินจากลูกค้าว่าง
                 {
                     MessageBox.Show("กรุณาใส่จำนวนเงินที่ได้รับจากลูกค้า");
                 }
