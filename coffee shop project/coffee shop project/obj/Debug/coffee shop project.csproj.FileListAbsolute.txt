@@ -1,7 +1,6 @@
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\coffee shop project.exe.config
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\coffee shop project.exe
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\coffee shop project.pdb
-C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.csprojAssemblyReference.cache
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee_shop_project.Form1.resources
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee_shop_project.Properties.Resources.resources
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.csproj.GenerateResource.cache
