@@ -7,6 +7,7 @@ namespace coffee_shop_project
     public partial class Form1 : Form
     {
         public int totolprice;
+        public int prices;
         public Form1()
         {
             InitializeComponent();
@@ -50,6 +51,27 @@ namespace coffee_shop_project
             string N_product = comboBox1.Text; //เครื่องดื่ม
             string T_product = comboBox2.Text; //ชนิดเครื่องดื่ม
             string O_product = comboBox3.Text; //เพิ่มเติม
+            
+            //------------------------------------------------------------------------//
+
+            string sql = "SELECT Price FROM products WHERE ProductName ='" + N_product + "'";
+            MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            con.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+
+                cal_price = reader.GetInt32("Price");
+                prices = reader.GetInt32("Price");
+                totolprice += totolprice + cal_price;
+
+            }
+            con.Close();
+            //cal_price = cal_price + totolprice;
+            string x = totolprice.ToString();
+            textBox1.Text = x;
+            //-----------------------------------------------------------
             if (N_product == "เลือกเครื่องดื่ม") //เช็คเงื่อนไข เลือกเครื่องดื่มหรือยัง
             {
                 MessageBox.Show("เครื่องดื่มยังไม่ถูกเลือก");
@@ -64,33 +86,22 @@ namespace coffee_shop_project
                 {   //เช็คเงื่อนไข เพิ่มอะไรลงในเครื่องดื่มหรือไม่
                     if (O_product == "ไม่เพิ่ม" || O_product == "เพิ่มเติม")   //ไม่เพิ่ม
                     {
-                        listBox1.Items.Add("" + N_product + " " + T_product + "");
+                        //listBox1.Items.Add("" + N_product + " " + T_product + "");
+                        listBox1.Items.Add(N_product);
+                        listBox2.Items.Add(T_product);
+                        listBox3.Items.Add(O_product);
+                        listBox4.Items.Add(prices);
                     }
                     else   //เพิ่ม
                     {
 
-                        listBox1.Items.Add("" + N_product + " " + T_product + " " + O_product + ""); //เพิ่มรายการนี้ลงใน listbox
+                        //listBox1.Items.Add("" + N_product + " " + T_product + "");
+                        listBox1.Items.Add(N_product);
+                        listBox2.Items.Add(T_product);
+                        listBox3.Items.Add(O_product); //เพิ่มรายการนี้ลงใน listbox
                     }
                 }
             }
-            //------------------------------------------------------------------------//
-
-            string sql = "SELECT Price FROM products WHERE ProductName ='" + N_product + "'";
-            MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
-            MySqlCommand cmd = new MySqlCommand(sql, con);
-            con.Open();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-
-                cal_price = reader.GetInt32("Price");
-                totolprice += totolprice + cal_price;
-
-            }
-            con.Close();
-            //cal_price = cal_price + totolprice;
-            string x = totolprice.ToString();
-            textBox1.Text = x;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -124,6 +135,8 @@ namespace coffee_shop_project
                 ------------------------------------------------------------
             }*/
             listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            listBox3.Items.Clear();
             totolprice = 0;
             textBox1.Text = totolprice.ToString();
         }
