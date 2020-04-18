@@ -412,7 +412,6 @@
             this.textBox4.Location = new System.Drawing.Point(184, 547);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(285, 64);
             this.textBox4.TabIndex = 6;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -468,9 +467,9 @@
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(847, 765);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(147, 36);
+            this.label18.Size = new System.Drawing.Size(201, 36);
             this.label18.TabIndex = 1;
-            this.label18.Text = "รวมทั้งหมด";
+            this.label18.Text = "รวมแต้มทั้งหมด";
             this.label18.Click += new System.EventHandler(this.label2_Click);
             // 
             // label19

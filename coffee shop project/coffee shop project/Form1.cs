@@ -104,7 +104,7 @@ namespace coffee_shop_project
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                string product = reader.GetString("ProductName"); 
+                string product = reader.GetString("ProductName");
                 comboBox1.Items.Add(product); //เพิ่มค่าใน comboBox1 ทั้งหมด
             }
             //cmd.ExecuteNonQuery();
@@ -171,27 +171,63 @@ namespace coffee_shop_project
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" || textBox1.Text == "0") //เช็คเงื่อนไข textBox1 ว่างหรือเท่ากับ 0 หรือไม่
+            if (textBox4.Text != "") //ถ้า textBox4 ไม่ว่าง
             {
-                //ไม่ต้องทำอะไร
-            }
-            else
-            {
-                if (textBox2.Text != "") //เช็คเงื่อนไขถ้า textBox2 ไม่ว่าง
+                if (textBox1.Text == "" || textBox1.Text == "0") //เช็คเงื่อนไข textBox1 ว่างหรือเท่ากับ 0 หรือไม่
                 {
-                    int totol = int.Parse(textBox2.Text) - totolprice; //ลบจำนวนเงินที่ได้จากลูกค้า กับ ราคาทั้งหมด
-                    textBox3.Text = totol.ToString(); //แปลงค่าเป็นข้อความ
-                    if (int.Parse(textBox3.Text) < 0)   //เช็นเงื่อนไข ถ้าเงินทอนติดลบ
-                    {
-                        int c = int.Parse(textBox3.Text) * (-1); //คูณจำนวนที่ติดลบเข้ากับ -1
-                        MessageBox.Show("จำนวนเงินไม่พอจ่ายอีก " + c + " บาท"); //แสดงเงินที่ต้องจ่ายเพิ่ม
-                    }
+                    //ไม่ต้องทำอะไร
                 }
-                else //ถ้าช่องรับเงินจากลูกค้าว่าง
+                else
                 {
-                    MessageBox.Show("กรุณาใส่จำนวนเงินที่ได้รับจากลูกค้า");
+                    if (textBox2.Text != "") //เช็คเงื่อนไขถ้า textBox2 ไม่ว่าง
+                    {
+                        int totol = int.Parse(textBox2.Text) - totolprice; //ลบจำนวนเงินที่ได้จากลูกค้า กับ ราคาทั้งหมด
+                        textBox3.Text = totol.ToString(); //แปลงค่าเป็นข้อความ
+                        if (int.Parse(textBox3.Text) < 0)   //เช็นเงื่อนไข ถ้าเงินทอนติดลบ
+                        {
+                            int c = int.Parse(textBox3.Text) * (-1); //คูณจำนวนที่ติดลบเข้ากับ -1
+                            MessageBox.Show("จำนวนเงินไม่พอจ่ายอีก " + c + " บาท"); //แสดงเงินที่ต้องจ่ายเพิ่ม
+                        }
+                    }
+                    else //ถ้าช่องรับเงินจากลูกค้าว่าง
+                    {
+                        MessageBox.Show("กรุณาใส่จำนวนเงินที่ได้รับจากลูกค้า");
+                    }
+
                 }
 
+
+
+                int CustomerID = int.Parse(textBox4.Text);
+                string sql = "SELECT * FROM customers where CustomerID ='" + CustomerID + "'";
+                MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                con.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    int Npoint = totolprice / 25;
+                    string cus_ID = reader.GetString("CustomerID"); //เก็บราคา)
+                    string cus_name = reader.GetString("CustomerName"); //เก็บราคาเฉพาะชิ้น
+                    string cus_tel = reader.GetString("CustomerTelNo");
+                    int cus_Bpoint = reader.GetInt32("customers_points");
+                    label14.Text = "ไอดีลูกค้า     " + cus_ID + "";
+                    label15.Text = "ชื่อลูกค้า      " + cus_name + "";
+                    label19.Text = "เบอร์โทรลูกค้า  " + cus_tel + "";
+                    label16.Text = "แต้มก่อนหน้านี้  " + cus_Bpoint.ToString() + "";
+                    label17.Text = "แต้มที่ได้ในครั้งนี้  " + Npoint + "";
+                    label18.Text = "รวมแต้มทั้งหมด " + Npoint + cus_Bpoint + "";
+
+                }
+                con.Close();
+
+
+
+
+            }
+            else //ถ้า textBox4 ว่าง
+            {
+                MessageBox.Show("กรุณาใส่ ID ของลูกค้า");
             }
 
         }
