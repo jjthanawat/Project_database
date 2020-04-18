@@ -33,8 +33,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>D:\Users\Desktop\project_problem_sovling_lab\Cinema Program (demo)\Cinema Program\bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web">
+      <HintPath>D:\Users\Desktop\project_problem_sovling_lab\Cinema Program (demo)\Cinema Program\bin\Debug\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCoder">
+      <HintPath>D:\Users\Desktop\project_problem_sovling_lab\Cinema Program (demo)\Cinema Program\bin\Debug\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common">
+      <HintPath>D:\Users\Desktop\project_problem_sovling_lab\Cinema Program (demo)\Cinema Program\bin\Debug\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="add proucts.cs">
+    <Compile Include="add_products.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="add proucts.Designer.cs">
-      <DependentUpon>add proucts.cs</DependentUpon>
+    <Compile Include="add_products.Designer.cs">
+      <DependentUpon>add_products.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -60,8 +72,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="add proucts.resx">
-      <DependentUpon>add proucts.cs</DependentUpon>
+    <EmbeddedResource Include="add_products.resx">
+      <DependentUpon>add_products.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

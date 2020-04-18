@@ -34,6 +34,12 @@ namespace coffee_shop_project
 
         private void button3_Click(object sender, EventArgs e)
         {
+            add_proucts addproducts = new add_proucts();
+            addproducts.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
         }
     }
