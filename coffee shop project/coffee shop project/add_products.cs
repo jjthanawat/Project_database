@@ -25,23 +25,20 @@ namespace coffee_shop_project
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            string sql = "select * from users";
-            sql = "insert into users(users,password,name,tel) values('" + username + "','" + password + "','" + name + "','" + telephone + "')";
-            MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=mca12345;database=project");
+            /*string Nproduct = textBox1.Text; //เก็บค่ารายชื่อสินค้า
+            string Pproduct = textBox2.Text; //เก็บค่าราคาสินค้า
+            string sql = "select * from products";
+            //sql = "insert into users(users,password,name,tel) values('" + username + "','" + password + "','" + name + "','" + telephone + "')";
+            sql = "INSERT INTO products (ProductID, ProductName, Price, ProductDetail) VALUES('0000', 'productname0000000', '60', 'ProductDetail0000000')";
+            MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
 
             MySqlCommand cmd = new MySqlCommand(sql, con);
             con.Open();
-
-            /*MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                MessageBox.Show(reader.GetString("id")+" "+reader.GetString("name"));
-            }*/
-
             cmd.ExecuteNonQuery();
             con.Close();
-            MessageBox.Show("Registered Please return to the login page.");
+            MessageBox.Show("Registered Please return to the login page.");*/
+            Random r = new Random();
+
         }
     }
 }
