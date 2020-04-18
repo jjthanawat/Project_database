@@ -113,6 +113,7 @@ namespace coffee_shop_project
 
         private void button2_Click(object sender, EventArgs e)
         {
+            /*------------------------------------------------------------
             if (listBox1.Text == "")
             {
                 MessageBox.Show("กรุณาเลือกเครื่องดื่มในหน้ารายการ");
@@ -120,7 +121,11 @@ namespace coffee_shop_project
             else
             {
                 listBox1.Items.Remove(listBox1.Text);
-            }
+                ------------------------------------------------------------
+            }*/
+            listBox1.Items.Clear();
+            totolprice = 0;
+            textBox1.Text = totolprice.ToString();
         }
 
         private void label2_Click(object sender, EventArgs e)

@@ -19,4 +19,3 @@ C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop projec
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\MySql.Data.xml
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\bin\Debug\MySql.Web.xml
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.csproj.CopyComplete
-C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.csprojAssemblyReference.cache
