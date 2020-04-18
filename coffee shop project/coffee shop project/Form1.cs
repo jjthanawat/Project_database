@@ -167,9 +167,30 @@ namespace coffee_shop_project
         }
 
         private void button6_Click(object sender, EventArgs e)
-        {            
-            int totol = int.Parse(textBox2.Text)- totolprice;
-            textBox3.Text = totol.ToString();
+        {
+            if (textBox1.Text == "" || textBox1.Text == "0")
+            {
+
+            }
+            else
+            {
+                if (textBox2.Text != "")
+                {
+                    int totol = int.Parse(textBox2.Text) - totolprice;
+                    textBox3.Text = totol.ToString();
+                    if (int.Parse(textBox3.Text) < 0)
+                    {
+                        int c = int.Parse(textBox3.Text)*(-1);
+                        MessageBox.Show("จำนวนเงินไม่พอจ่ายอีก "+c+" บาท");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("กรุณาใส่จำนวนเงินที่ได้รับจากลูกค้า");
+                }
+                
+            }
+
         }
     }
 }
