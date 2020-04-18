@@ -8,3 +8,4 @@ C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop projec
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.csproj.CoreCompileInputs.cache
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.exe
 C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee shop project.pdb
+C:\Users\MJ\source\repos\Project_database\coffee shop project\coffee shop project\obj\Debug\coffee_shop_project.add_proucts.resources
