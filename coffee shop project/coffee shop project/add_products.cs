@@ -1,14 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Collections;
 
 
 namespace coffee_shop_project
@@ -27,9 +19,10 @@ namespace coffee_shop_project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string output = "";
+            //-------------------------สุ่มตัวเลข--------------------//
+            /*string output = "";//เก็บตัวเลข 11 ตัวที่ได้จากการสุ่มแปลงเป็น string
             Random r = new Random();
-            int[] ar_ran = new int[11];
+            int[] ar_ran = new int[11]; //เก็บตัวเลข 11 ตัวที่ได้จากการสุ่ม
             for(int i = 0; i <= 10; i++)
             {
                 ar_ran[i] = r.Next(0,9);
@@ -37,29 +30,33 @@ namespace coffee_shop_project
             for (int j = 0; j <= 10; j++)
             {
                 output += ar_ran[j] + "";
-            }
-            textBox1.Text = output;
+            }*/
 
-
-
-
-
-
-
-
-            /*string Nproduct = textBox1.Text; //เก็บค่ารายชื่อสินค้า
+            string Nproduct = textBox1.Text; //เก็บค่ารายชื่อสินค้า
             string Pproduct = textBox2.Text; //เก็บค่าราคาสินค้า
+            string Detail = textBox3.Text;  //เก็บรายละเอียดสินค้า
             string sql = "select * from products";
             //sql = "insert into users(users,password,name,tel) values('" + username + "','" + password + "','" + name + "','" + telephone + "')";
-            sql = "INSERT INTO products (ProductID, ProductName, Price, ProductDetail) VALUES('0000', 'productname0000000', '60', 'ProductDetail0000000')";
-            MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+            //DELETE FROM `products` WHERE `products`.`ProductID` = 9;
 
-            MySqlCommand cmd = new MySqlCommand(sql, con);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-            MessageBox.Show("Registered Please return to the login page.");*/
+            if (Nproduct.Length != 0 && Pproduct.Length != 0)
+            {
+                sql = "INSERT INTO products (ProductName, Price, ProductDetail) VALUES('" + Nproduct + "', '" + Pproduct + "', '" + Detail + "')";
+                MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
 
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("บันทึกสินค้าแล้ว");
+                textBox1.Clear();
+                textBox2.Clear();
+                textBox3.Clear();
+            }
+            else
+            {
+                MessageBox.Show("กรุณาใส่ชื่อ และราคาของสินค้าด้วยครับ");
+            }
         }
     }
 }
