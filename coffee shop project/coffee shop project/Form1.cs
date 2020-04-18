@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace coffee_shop_project
@@ -34,6 +27,7 @@ namespace coffee_shop_project
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Hide();
             add_proucts addproducts = new add_proucts();
             addproducts.Show();
         }

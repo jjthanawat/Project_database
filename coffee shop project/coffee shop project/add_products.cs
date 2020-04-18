@@ -14,7 +14,6 @@ namespace coffee_shop_project
 
         private void add_proucts_Load(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -57,6 +56,13 @@ namespace coffee_shop_project
             {
                 MessageBox.Show("กรุณาใส่ชื่อ และราคาของสินค้าด้วยครับ");
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 F1 = new Form1();
+            F1.Show();
         }
     }
 }
