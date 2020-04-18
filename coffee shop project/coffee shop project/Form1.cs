@@ -45,6 +45,7 @@ namespace coffee_shop_project
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int cal_price = 0;
             string N_product = comboBox1.Text; //เครื่องดื่ม
             string T_product = comboBox2.Text; //ชนิดเครื่องดื่ม
             string O_product = comboBox3.Text; //เพิ่มเติม
@@ -72,21 +73,23 @@ namespace coffee_shop_project
                 }
             }
             //------------------------------------------------------------------------//
-            listBox1.Items.Clear();
-            string sql = "select * from products";
+
+            string sql = "SELECT Price FROM products WHERE ProductName ='" + N_product + "'";
             MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
             MySqlCommand cmd = new MySqlCommand(sql, con);
             con.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            if (reader.Read())
             {
-                string product = reader.GetString("ProductName");
-                listBox1.Items.Add(product);
+
+                int totolprice = reader.GetInt32("Price");
+                cal_price += totolprice;
+                
             }
-            //cmd.ExecuteNonQuery();
             con.Close();
-
-
+            //cal_price = cal_price + totolprice;
+            string x = cal_price.ToString();
+            textBox1.Text = x;
 
         }
 

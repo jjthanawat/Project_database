@@ -67,17 +67,6 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "เอสเปรสโซ่",
-            "อเมซอน",
-            "อเมซอน เอ็กซ์ตร้า",
-            "แบล็คคอฟฟี่",
-            "แบล็คคอฟฟี่น้ำผึ้ง ",
-            "แบล็คคอฟฟี่น้ำผึ้งมะนาว ",
-            "คาปูชิโน",
-            "ลาเต้อเมซอน",
-            "มอคค่า",
-            "ไวท์ ช็อก มัคคิอาโต้"});
             this.comboBox1.Location = new System.Drawing.Point(54, 167);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
@@ -114,7 +103,7 @@
             this.comboBox3.Location = new System.Drawing.Point(580, 171);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(126, 33);
+            this.comboBox3.Size = new System.Drawing.Size(164, 33);
             this.comboBox3.TabIndex = 4;
             this.comboBox3.Text = "เพิ่มเติม";
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
@@ -122,7 +111,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(724, 168);
+            this.button1.Location = new System.Drawing.Point(748, 168);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(154, 36);
@@ -134,7 +123,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(724, 269);
+            this.button2.Location = new System.Drawing.Point(748, 269);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(154, 36);
