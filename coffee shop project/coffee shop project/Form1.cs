@@ -197,7 +197,7 @@ namespace coffee_shop_project
                 }
 
 
-
+                int ttp = 0;
                 int CustomerID = int.Parse(textBox4.Text);
                 string sql = "SELECT * FROM customers where CustomerID ='" + CustomerID + "'";
                 MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
@@ -215,12 +215,24 @@ namespace coffee_shop_project
                     label15.Text = "ชื่อลูกค้า      " + cus_name + "";
                     label19.Text = "เบอร์โทรลูกค้า  " + cus_tel + "";
                     label16.Text = "แต้มก่อนหน้านี้  " + cus_Bpoint.ToString() + "";
-                    label17.Text = "แต้มที่ได้ในครั้งนี้  " + Npoint + "";
-                    label18.Text = "รวมแต้มทั้งหมด " + Npoint + cus_Bpoint + "";
+                    label17.Text = "แต้มที่ได้ในครั้งนี้ " + Npoint + "";
+                    ttp = Npoint + cus_Bpoint;
+                    label18.Text = "รวมแต้มทั้งหมด " + ttp + "";
 
                 }
                 con.Close();
 
+                sql = "INSERT INTO customers_points (CustomerID, customers_points) VALUES ('" + CustomerID + "', '" + ttp + "')";
+                //MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+                MySqlCommand cmd1 = new MySqlCommand(sql, con);
+
+
+
+                /*string sql1 = "UPDATE customers SET customers_points = ''" + ttp + "'' WHERE `customers`.`CustomerID` = '" + CustomerID + "'";
+                MySqlConnection con1 = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+                MySqlCommand cmd1 = new MySqlCommand(sql1, con1);
+                con1.Open();
+                con1.Close();*/
 
 
 
