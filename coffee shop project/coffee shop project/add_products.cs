@@ -82,8 +82,10 @@ namespace coffee_shop_project
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                string product = reader.GetString("ProductName");
-                listBox1.Items.Add(product);
+                string productname = reader.GetString("ProductName");
+                string productprice = reader.GetString("Price");
+                //string product = "" + productname + " " + productprice + "";
+                listBox1.Items.Add(productname);
             }
             //cmd.ExecuteNonQuery();
             con.Close();

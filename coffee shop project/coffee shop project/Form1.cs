@@ -85,7 +85,7 @@ namespace coffee_shop_project
 
                 cal_price = reader.GetInt32("Price");
                 totolprice += totolprice + cal_price;
-                
+
             }
             con.Close();
             //cal_price = cal_price + totolprice;
@@ -144,6 +144,27 @@ namespace coffee_shop_project
             }
             //cmd.ExecuteNonQuery();
             con.Close();*/
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {            
+            int totol = int.Parse(textBox2.Text)- totolprice;
+            textBox3.Text = totol.ToString();
         }
     }
 }
