@@ -6,6 +6,7 @@ namespace coffee_shop_project
 {
     public partial class Form1 : Form
     {
+        public int totolprice;
         public Form1()
         {
             InitializeComponent();
@@ -82,15 +83,14 @@ namespace coffee_shop_project
             if (reader.Read())
             {
 
-                int totolprice = reader.GetInt32("Price");
-                cal_price += totolprice;
+                cal_price = reader.GetInt32("Price");
+                totolprice += totolprice + cal_price;
                 
             }
             con.Close();
             //cal_price = cal_price + totolprice;
-            string x = cal_price.ToString();
+            string x = totolprice.ToString();
             textBox1.Text = x;
-
         }
 
         private void button4_Click(object sender, EventArgs e)
