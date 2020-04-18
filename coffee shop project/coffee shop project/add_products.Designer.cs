@@ -43,6 +43,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button4
@@ -139,6 +140,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(618, 207);
             this.listBox1.TabIndex = 15;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -194,11 +196,23 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "เพิ่มสินค้า";
             // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(485, 630);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(160, 36);
+            this.button6.TabIndex = 17;
+            this.button6.Text = "UPDATE";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // add_proucts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 691);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox3);
@@ -239,5 +253,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button6;
     }
 }

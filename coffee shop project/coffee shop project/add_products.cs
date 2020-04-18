@@ -56,6 +56,7 @@ namespace coffee_shop_project
             {
                 MessageBox.Show("กรุณาใส่ชื่อ และราคาของสินค้าด้วยครับ");
             }
+            listBox1.Items.Add(Nproduct);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -63,6 +64,29 @@ namespace coffee_shop_project
             this.Hide();
             Form1 F1 = new Form1();
             F1.Show();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            string sql = "select * from products";
+            MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            con.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string product = reader.GetString("ProductName");
+                listBox1.Items.Add(product);
+            }
+            //cmd.ExecuteNonQuery();
+            con.Close();
         }
     }
 }
