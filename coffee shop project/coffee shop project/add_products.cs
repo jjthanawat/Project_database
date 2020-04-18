@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
+
 
 namespace coffee_shop_project
 {
@@ -25,6 +27,22 @@ namespace coffee_shop_project
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Random r = new Random();
+            int[] ar_ran = new int[11];
+            for(int i = 0; i <= 11; i++)
+            {
+                ar_ran[i] = r.Next();
+            }
+            foreach(int i in ar_ran)
+            {
+                listBox1.Show(i);
+            }
+            
+
+
+
+
+
             /*string Nproduct = textBox1.Text; //เก็บค่ารายชื่อสินค้า
             string Pproduct = textBox2.Text; //เก็บค่าราคาสินค้า
             string sql = "select * from products";
@@ -37,7 +55,6 @@ namespace coffee_shop_project
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Registered Please return to the login page.");*/
-            Random r = new Random();
 
         }
     }
