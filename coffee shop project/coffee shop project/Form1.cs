@@ -194,27 +194,13 @@ namespace coffee_shop_project
                 }
 
             }
-
-            //sql = "INSERT INTO customers_points (CustomerID, customers_points) VALUES ('" + CustomerID + "', '" + ttp + "')";
-            //MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
-            //MySqlCommand cmd1 = new MySqlCommand(sql, con);
-
-
-
-            /*string sql1 = "UPDATE customers SET customers_points = ''" + ttp + "'' WHERE `customers`.`CustomerID` = '" + CustomerID + "'";
-            MySqlConnection con1 = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
-            MySqlCommand cmd1 = new MySqlCommand(sql1, con1);
-            con1.Open();
-            con1.Close();*/
-
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             if (textBox4.Text != "") //ถ้า textBox4 ไม่ว่าง
             {
-
-
+                /*
                 int ttp = 0;
                 int CustomerID = int.Parse(textBox4.Text);
                 string sql = "SELECT * FROM customers where CustomerID ='" + CustomerID + "'";
@@ -238,8 +224,46 @@ namespace coffee_shop_project
                     label18.Text = "รวมแต้มทั้งหมด " + ttp + "";
 
                 }
+                con.Close();*/
+
+
+
+                int ttp = 0;
+                int CustomerID = int.Parse(textBox4.Text);
+                int Npoint = totolprice / 25;
+                string sql = "SELECT * FROM customers where CustomerID ='" + CustomerID + "'";
+                MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                con.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
                 con.Close();
 
+
+
+                               
+               
+                string sql1 = "UPDATE customers SET customers_points = '" + Npoint + "' WHERE customers.CustomerID ='" + CustomerID + "'";
+                MySqlConnection con1 = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+                MySqlCommand cmd1 = new MySqlCommand(sql1, con1);
+                con1.Open();
+                MySqlDataReader reader1 = cmd1.ExecuteReader();
+                if (reader1.Read())
+                {
+                    string cus_ID = reader.GetString("CustomerID"); //เก็บราคา)
+                    string cus_name = reader.GetString("CustomerName"); //เก็บราคาเฉพาะชิ้น
+                    string cus_tel = reader.GetString("CustomerTelNo");
+                    int cus_Bpoint = reader.GetInt32("customers_points");
+                    label14.Text = "ไอดีลูกค้า     " + cus_ID + "";
+                    label15.Text = "ชื่อลูกค้า      " + cus_name + "";
+                    label19.Text = "เบอร์โทรลูกค้า  " + cus_tel + "";
+                    label16.Text = "แต้มก่อนหน้านี้  " + cus_Bpoint.ToString() + "";
+                    label17.Text = "แต้มที่ได้ในครั้งนี้ " + Npoint + "";
+                    ttp = Npoint + cus_Bpoint;
+                    label18.Text = "รวมแต้มทั้งหมด " + ttp + "";
+
+                }
+                con1.Close();
+                
             }
             else //ถ้า textBox4 ว่าง
             {
