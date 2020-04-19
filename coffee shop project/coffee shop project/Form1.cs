@@ -171,30 +171,48 @@ namespace coffee_shop_project
 
         private void button6_Click(object sender, EventArgs e)
         {
+
+            if (textBox1.Text == "" || textBox1.Text == "0") //เช็คเงื่อนไข textBox1 ว่างหรือเท่ากับ 0 หรือไม่
+            {
+                //ไม่ต้องทำอะไร
+            }
+            else
+            {
+                if (textBox2.Text != "") //เช็คเงื่อนไขถ้า textBox2 ไม่ว่าง
+                {
+                    int totol = int.Parse(textBox2.Text) - totolprice; //ลบจำนวนเงินที่ได้จากลูกค้า กับ ราคาทั้งหมด
+                    textBox3.Text = totol.ToString(); //แปลงค่าเป็นข้อความ
+                    if (int.Parse(textBox3.Text) < 0)   //เช็นเงื่อนไข ถ้าเงินทอนติดลบ
+                    {
+                        int c = int.Parse(textBox3.Text) * (-1); //คูณจำนวนที่ติดลบเข้ากับ -1
+                        MessageBox.Show("จำนวนเงินไม่พอจ่ายอีก " + c + " บาท"); //แสดงเงินที่ต้องจ่ายเพิ่ม
+                    }
+                }
+                else //ถ้าช่องรับเงินจากลูกค้าว่าง
+                {
+                    MessageBox.Show("กรุณาใส่จำนวนเงินที่ได้รับจากลูกค้า");
+                }
+
+            }
+
+            //sql = "INSERT INTO customers_points (CustomerID, customers_points) VALUES ('" + CustomerID + "', '" + ttp + "')";
+            //MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+            //MySqlCommand cmd1 = new MySqlCommand(sql, con);
+
+
+
+            /*string sql1 = "UPDATE customers SET customers_points = ''" + ttp + "'' WHERE `customers`.`CustomerID` = '" + CustomerID + "'";
+            MySqlConnection con1 = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
+            MySqlCommand cmd1 = new MySqlCommand(sql1, con1);
+            con1.Open();
+            con1.Close();*/
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
             if (textBox4.Text != "") //ถ้า textBox4 ไม่ว่าง
             {
-                if (textBox1.Text == "" || textBox1.Text == "0") //เช็คเงื่อนไข textBox1 ว่างหรือเท่ากับ 0 หรือไม่
-                {
-                    //ไม่ต้องทำอะไร
-                }
-                else
-                {
-                    if (textBox2.Text != "") //เช็คเงื่อนไขถ้า textBox2 ไม่ว่าง
-                    {
-                        int totol = int.Parse(textBox2.Text) - totolprice; //ลบจำนวนเงินที่ได้จากลูกค้า กับ ราคาทั้งหมด
-                        textBox3.Text = totol.ToString(); //แปลงค่าเป็นข้อความ
-                        if (int.Parse(textBox3.Text) < 0)   //เช็นเงื่อนไข ถ้าเงินทอนติดลบ
-                        {
-                            int c = int.Parse(textBox3.Text) * (-1); //คูณจำนวนที่ติดลบเข้ากับ -1
-                            MessageBox.Show("จำนวนเงินไม่พอจ่ายอีก " + c + " บาท"); //แสดงเงินที่ต้องจ่ายเพิ่ม
-                        }
-                    }
-                    else //ถ้าช่องรับเงินจากลูกค้าว่าง
-                    {
-                        MessageBox.Show("กรุณาใส่จำนวนเงินที่ได้รับจากลูกค้า");
-                    }
-
-                }
 
 
                 int ttp = 0;
@@ -222,26 +240,11 @@ namespace coffee_shop_project
                 }
                 con.Close();
 
-                sql = "INSERT INTO customers_points (CustomerID, customers_points) VALUES ('" + CustomerID + "', '" + ttp + "')";
-                //MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
-                MySqlCommand cmd1 = new MySqlCommand(sql, con);
-
-
-
-                /*string sql1 = "UPDATE customers SET customers_points = ''" + ttp + "'' WHERE `customers`.`CustomerID` = '" + CustomerID + "'";
-                MySqlConnection con1 = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
-                MySqlCommand cmd1 = new MySqlCommand(sql1, con1);
-                con1.Open();
-                con1.Close();*/
-
-
-
             }
             else //ถ้า textBox4 ว่าง
             {
                 MessageBox.Show("กรุณาใส่ ID ของลูกค้า");
             }
-
         }
     }
 }
