@@ -6,7 +6,7 @@ namespace coffee_shop_project
 {
     public partial class Form1 : Form
     {
-        public int totolprice; //เก็บราคารวม โดยบวกไปเรื่อยๆ
+        public int totalprice; //เก็บราคารวม โดยบวกไปเรื่อยๆ
         public int prices;  //เก็บราคาเฉพาะต่อชิ้น
         public int cus_Bpoint; //เก็บแต้มต่อคน จากฐานข้อมูล
         public int Now_point; //เก็บแต้มปัจจุบัน
@@ -49,6 +49,10 @@ namespace coffee_shop_project
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int x1 = 1 + listBox1.Items.Count; //นับจำนวนรายการทั้งหมด
+            label21.Text = "ทั้งหมด   " + x1.ToString() + "   รายการ";
+
+
             int cal_price = 0;
             string N_product = comboBox1.Text; //เครื่องดื่ม
             string T_product = comboBox2.Text; //ชนิดเครื่องดื่ม
@@ -66,12 +70,12 @@ namespace coffee_shop_project
 
                 cal_price = reader.GetInt32("Price"); //เก็บราคา
                 prices = reader.GetInt32("Price"); //เก็บราคาเฉพาะชิ้น
-                totolprice += totolprice + cal_price; //เก็บราคารวม โยกการบวกราคาไปเรื่อยๆ
+                totalprice = totalprice + cal_price; //เก็บราคารวม โยกการบวกราคาไปเรื่อยๆ
 
             }
             con.Close();
-            //cal_price = cal_price + totolprice;
-            string x = totolprice.ToString(); //แปลงค่าเพื่อแสดงใน textBox1
+            //cal_price = cal_price + totalprice;
+            string x = totalprice.ToString(); //แปลงค่าเพื่อแสดงใน textBox1
             textBox1.Text = x; //แสดงราคารวม
             //-----------------------------------------------------------
             if (N_product == "เลือกเครื่องดื่ม") //เช็คเงื่อนไข เลือกเครื่องดื่มหรือยัง
@@ -135,8 +139,8 @@ namespace coffee_shop_project
             textBox3.Clear();
             textBox4.Clear();
 
-            totolprice = 0;
-            textBox1.Text = totolprice.ToString();
+            totalprice = 0;
+            textBox1.Text = totalprice.ToString();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -179,8 +183,14 @@ namespace coffee_shop_project
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (textBox4.Text != "" && textBox1.Text != "" && textBox2.Text != "")
+            int total_product = 1 + listBox1.Items.Count; //เก็บจำนวนแก้ว
+            int total_product2 =listBox1.Items.Count;
+            string DateText = DateTime.Now.ToLongDateString(); //เก็บวันที่
+
+
+            if (textBox4.Text != "" && textBox1.Text != "" && textBox2.Text != "") //เช็คเงื่อนไข ถ้าหาก textbox1,2,4 ว่าง แสดงว่ายังไม่ได้คิดเงิน
             {
+                //---------------------------------------ดึงข้อมูลแต้มจากฐานข้อมูล-----------------------------
                 int CustomerID = int.Parse(textBox4.Text);
                 string sql = "SELECT * FROM customers where CustomerID ='" + CustomerID + "'";
                 MySqlConnection con = new MySqlConnection("host = localhost;user=root;password=123456789;database=py_database");
@@ -193,12 +203,12 @@ namespace coffee_shop_project
                     cus_Bpoint = cus_Bpoint + readpoint;
                 }
                 con.Close();
-
+                //-------------------------------------------------------------------------------------
 
 
 
                 //-----------------UPDATE `customers` SET `customers_points` = '1' WHERE `customers`.`CustomerID` = 1;
-                if (textBox4.Text != "")
+                if (textBox4.Text != "") //เช็คเงื่อนไข ถ้า textBox4 ว่าง แสดงว่ายังไม่ใส่ ID ของลูกค้า
                 {
                     if (textBox1.Text == "" || textBox1.Text == "0") //เช็คเงื่อนไข textBox1 ว่างหรือเท่ากับ 0 หรือไม่
                     {
@@ -209,7 +219,7 @@ namespace coffee_shop_project
                         if (textBox2.Text != "") //เช็คเงื่อนไขถ้า textBox2 ไม่ว่าง
                         {
                             //---------------------------สะสมแต้ม-----------------------------------//
-                            int Npoint = (totolprice / 25) + Now_point;
+                            int Npoint = (totalprice / 25) + Now_point; //เอาแต้มก่อนหน้า บวกกับแต้มที่ได้ในครั้งนี้ อัพเดทแต้มที่ฐานข้อมูล
                             sql = "UPDATE customers SET customers_points = '" + Npoint + "' WHERE customers.CustomerID = '" + CustomerID + "'";
                             cmd = new MySqlCommand(sql, con);
                             con.Open();
@@ -218,8 +228,21 @@ namespace coffee_shop_project
                             //---------------------------สะสมแต้ม-----------------------------------//
 
 
-                            int totol = int.Parse(textBox2.Text) - totolprice; //ลบจำนวนเงินที่ได้จากลูกค้า กับ ราคาทั้งหมด
-                            textBox3.Text = totol.ToString(); //แปลงค่าเป็นข้อความ
+
+
+                            //----------------------------------เก็บข้อมูลการขาย--------------------------------------------------------------------
+                            sql = "INSERT INTO `sales` (`SaleID`, `SaleDateTime`, `CustomerID`, `StaffID`, `GrandTotal`) " +
+                                "VALUES (NULL, '"+ DateText + "', '"+ textBox4.Text+ "', '"+ label20.Text+ "', '"+ total_product2 + "')";
+                            cmd = new MySqlCommand(sql, con);
+                            con.Open();
+                            reader = cmd.ExecuteReader();
+                            con.Close();
+                            //------------------------------------------------------------------------------------------------------------------
+
+
+
+                            int total = int.Parse(textBox2.Text) - totalprice; //ลบจำนวนเงินที่ได้จากลูกค้า กับ ราคาทั้งหมด
+                            textBox3.Text = total.ToString(); //แปลงค่าเป็นข้อความ
 
 
 
@@ -241,7 +264,7 @@ namespace coffee_shop_project
                 {
                     MessageBox.Show("กรุณาใส่ ID ของลูกค้า");
                 }
-            }            
+            }
             else
             {
                 MessageBox.Show("กรุณาใส่ ID ลูกค้า\nและทำการชำระเงินก่อน");
@@ -261,7 +284,7 @@ namespace coffee_shop_project
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    int Npoint = totolprice / 25;
+                    int Npoint = totalprice / 25;
                     string cus_ID = reader.GetString("CustomerID"); //เก็บราคา)
                     string cus_name = reader.GetString("CustomerName"); //เก็บราคาเฉพาะชิ้น
                     string cus_tel = reader.GetString("CustomerTelNo");
@@ -283,6 +306,23 @@ namespace coffee_shop_project
             {
                 MessageBox.Show("กรุณาใส่ ID ของลูกค้า\nและทำการชำระเงินก่อน");
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DialogResult iExit;
+            iExit = MessageBox.Show("Do you want to exit ?", "Cinema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (iExit == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Staff_login S1 = new Staff_login();
+            S1.Show();
         }
     }
 }
